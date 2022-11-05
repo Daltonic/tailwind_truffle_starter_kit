@@ -1,5 +1,5 @@
 {
-  "name": "adulamNFT",
+  "name": "starter_kit",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -9,6 +9,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "ipfs-http-client": "^59.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hooks-global-state": "^1.0.2",

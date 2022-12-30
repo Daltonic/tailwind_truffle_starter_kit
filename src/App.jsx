@@ -1,7 +1,17 @@
+import Header from "./components/header"
+import Hero from "./components/hero"
+import Players from "./components/players"
+import { Transactions } from "./components/transactions"
+
 const App = () => {
   return (
     <div className="min-h-screen">
-      <h4 className="text-3xl">Hello Truffle and Tailwind</h4>
+      <div className="gradient-bg-hero">
+        <Header></Header>
+        <Hero></Hero>
+      </div>
+      <Players />
+      <Transactions />
     </div>
   )
 }

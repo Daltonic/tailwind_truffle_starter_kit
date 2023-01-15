@@ -1,4 +1,9 @@
 import messiPng from '../assets/messi.png'
+import { setGlobalState, useGlobalState } from '../store'
+
+const openShowModal = () => {
+    setGlobalState('showModal', 'scale-100')
+}
 
 const Players = () => {
   return (
@@ -33,7 +38,7 @@ const Card = ({nft}) => (
                 <small className='text-xs'>Current Price</small>
                 <p className='text-sm font-semibold'>0.34 ETH</p>
             </div>
-            <button className='shadow-lg shadow-black text-sm bg-[#e32970] hover:bg-[#bd255f] rounded-full px-1.5 py-1'>View Details</button>
+            <button onClick={openShowModal} className='shadow-lg shadow-black text-sm bg-[#e32970] hover:bg-[#bd255f] rounded-full px-1.5 py-1'>View Details</button>
         </div>
     </div>
 )

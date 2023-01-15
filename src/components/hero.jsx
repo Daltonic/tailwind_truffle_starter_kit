@@ -1,5 +1,10 @@
 import Identicon from 'react-identicons'
 import messiPng from '../assets/messi.png'
+import { setGlobalState } from '../store'
+
+const openModal = () => {
+    setGlobalState('modal', 'scale-100')
+};
 
 const Hero = () => {
   return (
@@ -13,7 +18,7 @@ const Hero = () => {
                 <p className='text-gray-500 font-semibold text-sm mt-3'>Mint and collect the hottest NFTs around.</p>
             </div>
             <div className='flex mt-5'>
-                <button className='shadow-xl shadow-black text-white bg-[#e32970] hover:bg-[#bd255f] rounded-full p-2'>Create NFT</button>
+                <button onClick={openModal} className='shadow-xl shadow-black text-white bg-[#e32970] hover:bg-[#bd255f] rounded-full p-2'>Create NFT</button>
             </div>
             <div className='w-3/4 flex justify-between items-center mt-5'>
                 <div className='text-white'>

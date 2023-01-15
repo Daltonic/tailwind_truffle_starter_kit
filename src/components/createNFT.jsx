@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import {FaTimes} from 'react-icons/fa'
 import messiPng from '../assets/messi.png'
-import { useGlobalState } from '../store'
+import { setGlobalState, useGlobalState } from '../store'
 
 const CreateNFT = () => {
     const [modal] = useGlobalState('modal')
@@ -18,12 +18,12 @@ const CreateNFT = () => {
 
         console.log('Minted...')
 
-        resetForm()
+        closeModal()
     }
 
     const closeModal = () => {
+        setGlobalState('modal', 'scale-0')
         resetForm()
-
     }
 
     const resetForm = () => {
@@ -35,12 +35,12 @@ const CreateNFT = () => {
     }
 
   return (
-    <div className={'fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-black bg-opacity-50 transform transition-transform duration-800 ${modal}'}>
+    <div className={`fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-black bg-opacity-50 transform transition-transform duration-300 ${modal}`}>
         <div className="bg-[#151c25] shadow-xl shadow-[#e32970] rounded-xl w-11/12 md:w-2/5 h-7/12 p-6">
             <form className="flex flex-col" onSubmit={handleSubmit}>
                 <div className="flex justify-between items-center text-gray-400">
                     <p className="font-semibold">Add NFT</p>
-                    <button type="button" className="border-0 bg-transparent focus:outline-non">
+                    <button type="button" onClick={closeModal} className="border-0 bg-transparent focus:outline-non">
                         <FaTimes />
                     </button>
                 </div>
@@ -90,7 +90,7 @@ const CreateNFT = () => {
                     </textarea>
                 </div>
 
-                <button className='flex justify-center items-center w-full mt-5 text-white shadow-lg shadow-black text-sm bg-[#e32970] hover:bg-[#bd255f] rounded-full p-2'>Load More</button>
+                <button className='flex justify-center items-center w-full mt-5 text-white shadow-lg shadow-black text-sm bg-[#e32970] hover:bg-[#bd255f] rounded-full p-2'>Mint Now</button>
             </form>
         </div>
     </div>

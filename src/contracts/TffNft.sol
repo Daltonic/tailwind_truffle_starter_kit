@@ -119,6 +119,29 @@ contract TffNft is ERC721Enumerable, Ownable {
         );
 
         minted[id - 1].owner = msg.sender;
+    }
 
+    function changePrice(uint256 id, uint256 newPrice) external returns(bool) {
+        require(newPrice > 0 ether, "Ether too low!");
+        require(msg.sender == minted[id - 1].owner, "Operation not allowed!");
+        minted[id - 1].cost = newPrice;
+        return true;
+    }
+
+    function payTo(address to, uint256 amount) internal {
+        (bool success, ) = payable(to).call{value: amount}("");
+        require(success, "Failed to send Ether");
+    }
+
+    function getAllNFTs() external view returns(TransactionStruct[] memory) {
+        return minted;
+    }
+
+    function getNFT(uint256 id) external view returns(TransactionStruct memory) {
+        return minted[id - 1];
+    }
+
+    function getAllTransactions() external view returns(TransactionStruct[] memory) {
+        return transactions;
     }
 }
